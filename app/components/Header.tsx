@@ -1,30 +1,49 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Header() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <header className="w-full border-b bg-white/60 backdrop-blur-sm dark:bg-black/60 card animate-slide-down">
-      <div className="mx-auto flex max-w-4xl flex-col sm:flex-row items-start sm:items-center sm:justify-between gap-4 px-6 py-3">
-        <div className="flex items-center gap-3 min-w-0">
-          <Image src="/vibella-logo.svg" alt="Vibella" width={140} height={34} className="dark:invert" />
-          <div className="min-w-0">
-            <h1 className="text-lg font-semibold truncate">Vibella — Mạng xã hội tích cực</h1>
-          </div>
+    <header className="navbar w-full px-4 py-3 shadow-soft">
+      <div className="mx-auto max-w-5xl flex items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <Image src="/vibella-logo.svg" alt="Vibella" width={140} height={34} />
+          <nav className="hidden sm:flex items-center gap-4">
+            <Link href="/" className="underline-anim">Trang chủ</Link>
+            <Link href="/feed" className="underline-anim">Bảng tin</Link>
+            <Link href="/habits" className="underline-anim">Thói quen</Link>
+            <Link href="/challenges" className="underline-anim">Thách đấu</Link>
+          </nav>
         </div>
 
-        <nav className="flex items-center gap-3 flex-wrap mt-3 sm:mt-0 sm:justify-end w-full sm:w-auto overflow-x-auto">
-          <Link className="px-3 py-2 rounded hover:bg-black/5 dark:hover:bg-white/5 transition-link" href="/">Trang chủ</Link>
-          <Link className="px-3 py-2 rounded hover:bg-black/5 dark:hover:bg-white/5 transition-link" href="/feed">Bảng tin</Link>
-          <Link className="px-3 py-2 rounded hover:bg-black/5 dark:hover:bg-white/5 transition-link" href="/create">Tạo bài</Link>
-          <Link className="px-3 py-2 rounded hover:bg-black/5 dark:hover:bg-white/5 transition-link" href="/habits">Thói quen</Link>
-          <Link className="px-3 py-2 rounded hover:bg-black/5 dark:hover:bg-white/5 transition-link" href="/challenges">Thách đấu</Link>
-          <Link className="px-3 py-2 rounded hover:bg-black/5 dark:hover:bg-white/5 transition-link" href="/achievements">Thành tựu</Link>
-          <Link className="px-3 py-2 rounded hover:bg-black/5 dark:hover:bg-white/5 transition-link" href="/blogs">Chuyên gia</Link>
-          <Link className="btn-primary flex-shrink-0" href="/auth/login">Đăng nhập</Link>
-          <Link className="rounded border border-foreground px-3 py-2 flex-shrink-0" href="/auth/signup">Đăng ký</Link>
-        </nav>
+        <div className="flex items-center gap-3">
+          <div className="hidden sm:block">
+            <Link href="/auth/signup" className="btn-cta btn-cta-primary mr-2">Đăng ký</Link>
+            <Link href="/auth/login" className="btn-cta btn-cta-secondary">Đăng nhập</Link>
+          </div>
+
+          <button className="sm:hidden rounded border px-3 py-2" onClick={() => setOpen((v) => !v)} aria-label="Mở menu">
+            ☰
+          </button>
+        </div>
       </div>
+
+      {/* Mobile menu */}
+      {open && (
+        <div className="sm:hidden mt-3 mx-4 flex flex-col gap-2">
+          <Link href="/" className="underline-anim">Trang chủ</Link>
+          <Link href="/feed" className="underline-anim">Bảng tin</Link>
+          <Link href="/habits" className="underline-anim">Thói quen</Link>
+          <Link href="/challenges" className="underline-anim">Thách đấu</Link>
+          <div className="flex gap-2 pt-2">
+            <Link href="/auth/signup" className="btn-cta btn-cta-primary w-full text-center">Đăng ký</Link>
+            <Link href="/auth/login" className="btn-cta btn-cta-secondary w-full text-center">Đăng nhập</Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

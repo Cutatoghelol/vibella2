@@ -6,8 +6,8 @@ import PostCard from "./PostCard";
 
 export default function GuestLanding() {
   const MOCK_POSTS = [
-    { id: 1, author: "Nguyễn Ánh", text: "Hôm nay mình hoàn thành 20 phút thiền, cảm thấy nhẹ nhàng 😊 #meditation", likes: 34 },
-    { id: 2, author: "Lê Minh", text: "Uống đủ nước hôm nay! Hãy cố gắng nhé mọi người 💧 #water", likes: 12 },
+    { id: 1, author: "Nguyễn Ánh", text: "Hôm nay mình hoàn thành 20 phút thiền, cảm thấy nhẹ nhàng 😊 #meditation", likes: 34, tags: ["#meditation"] },
+    { id: 2, author: "Lê Minh", text: "Uống đủ nước hôm nay! Hãy cố gắng nhé mọi người 💧 #water", likes: 12, tags: ["#water"] },
   ];
 
   return (
@@ -18,8 +18,8 @@ export default function GuestLanding() {
           <p className="text-lg text-zinc-600 mb-4">Nơi lan tỏa năng lượng tích cực: theo dõi thói quen, tham gia thử thách và nhận trợ giúp tinh thần khi cần.</p>
 
           <div className="flex gap-3">
-            <Link className="btn-primary" href="/auth/signup">Đăng ký ngay</Link>
-            <Link className="btn-outline" href="/auth/login">Đăng nhập</Link>
+            <Link className="btn-cta btn-cta-primary rounded-2xl" href="/auth/signup">Đăng ký ngay</Link>
+            <Link className="btn-cta btn-cta-secondary rounded-2xl" href="/auth/login">Đăng nhập</Link>
           </div>
 
           <ul className="mt-6 list-disc pl-5 text-sm text-zinc-600">
@@ -47,12 +47,12 @@ export default function GuestLanding() {
       <section className="mb-8">
         <h2 className="text-xl font-semibold mb-4">Thử thách cộng đồng</h2>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-          <div className="card p-4">7 ngày thiền — Tham gia để nhận huy hiệu</div>
-          <div className="card p-4">Uống đủ nước 14 ngày — Theo dõi tiến độ</div>
+          <div className="card p-4 rounded-2xl">7 ngày thiền — Tham gia để nhận huy hiệu</div>
+          <div className="card p-4 rounded-2xl">Uống đủ nước 14 ngày — Theo dõi tiến độ</div>
         </div>
       </section>
 
-      <footer className="mt-12 text-center text-sm text-zinc-500">© Vibella — Lan tỏa năng lượng tích cực</footer>
+      <footer className="mt-12 text-center text-sm text-zinc-500 footer">© Vibella — Lan tỏa năng lượng tích cực</footer>
     </main>
   );
 }

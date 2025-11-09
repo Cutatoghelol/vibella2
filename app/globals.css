@@ -1,6 +1,115 @@
 @import "tailwindcss";
 
 :root {
+  /* Pastel theme */
+  --bg: #fffaf8; /* ivory-pink */
+  --muted: #6b6b6b;
+  --text: #222222;
+  --accent-pink: #ff8aa4; /* pastel pink */
+  --accent-lavender: #cdb7ff; /* lavender */
+  --accent-mint: #9be7d6; /* mint */
+  --card-bg: #ffffff;
+  --glass: rgba(255,255,255,0.6);
+  --glass-dark: rgba(10,10,12,0.45);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0710;
+    --text: #f1eff5;
+    --card-bg: rgba(255,255,255,0.03);
+    --glass: rgba(255,255,255,0.06);
+    --glass-dark: rgba(0,0,0,0.55);
+  }
+}
+
+html, body, #__next { height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Utility: large rounding & shadow */
+.rounded-2xl { border-radius: 1rem; }
+.shadow-soft { box-shadow: 0 10px 30px rgba(16,24,40,0.06); }
+
+/* Navbar (glassmorphism) */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  backdrop-filter: blur(8px);
+  background: linear-gradient(180deg, var(--glass), rgba(255,255,255,0.3));
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+
+/* Underline animation for links */
+.underline-anim { position: relative; }
+.underline-anim::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 2px; background: transparent;
+  transform-origin: left; transform: scaleX(0);
+  transition: transform 220ms ease, background 220ms ease;
+}
+.underline-anim:hover::after { transform: scaleX(1); background: linear-gradient(90deg,var(--accent-pink),var(--accent-lavender)); }
+
+/* CTA buttons: gradient, rounded, hover glow */
+.btn-cta {
+  border: 0; padding: 0.6rem 1rem; border-radius: 9999px; color: white; font-weight: 600;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.btn-cta-primary { background: linear-gradient(90deg, var(--accent-pink), var(--accent-lavender)); }
+.btn-cta-secondary { background: linear-gradient(90deg, var(--accent-mint), #b6f0e4); color: #083; }
+.btn-cta:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+
+/* Sidebar */
+.sidebar { background: transparent; }
+.sidebar .topic-badge { display: inline-block; padding: 6px 10px; border-radius: 9999px; background: linear-gradient(90deg, rgba(255,138,90,0.12), rgba(155,231,214,0.08)); font-size: 0.85rem; }
+
+/* Card (main feed) */
+.card {
+  background: var(--card-bg);
+  border-radius: 1rem; /* large rounding */
+  box-shadow: 0 14px 32px rgba(16,24,40,0.06);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+.card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(16,24,40,0.08); }
+
+.post-avatar { width: 44px; height: 44px; border-radius: 9999px; }
+.post-meta { font-size: 0.9rem; color: var(--muted); }
+
+/* Hashtag chips */
+.chip { display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:9999px; font-size:0.85rem; background: rgba(0,0,0,0.03); }
+.chip.pink { background: linear-gradient(90deg, rgba(255,138,164,0.12), rgba(205,183,255,0.08)); }
+.chip.mint { background: linear-gradient(90deg, rgba(155,231,214,0.12), rgba(255,234,210,0.06)); }
+.chip:hover { transform: translateY(-2px); }
+
+/* Action buttons (like/comment) */
+.action-btn { display:inline-flex; align-items:center; gap:8px; padding:8px 10px; border-radius:9999px; background: transparent; border: 1px solid rgba(0,0,0,0.04); transition: transform 160ms ease, box-shadow 160ms ease; }
+.action-btn:hover { transform: scale(1.03); box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
+.action-btn.heart { color: var(--accent-pink); }
+.action-btn.comment { color: #6b6b6b; }
+
+/* Footer */
+.footer { padding: 2rem 0; color: var(--muted); }
+
+/* Responsive helpers */
+@media (max-width: 768px) {
+  .nav-collapse { display:flex; gap:8px; }
+  .sidebar { display:none; }
+}
+
+/* keep previous utilities intact */
+.img-reveal { overflow:hidden; border-radius:12px; }
+
+@import "tailwindcss";
+
+:root {
   /* Primary palette — pink / red focused */
   --background: #fff0f6; /* very light pink */
   --foreground: #ff3b6f; /* primary accent (pink-red) */
