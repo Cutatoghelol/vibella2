@@ -16,7 +16,7 @@ export default function PostCard({ post }: { post?: any }) {
   }
 
   return (
-    <article className="rounded border p-4">
+    <article className="rounded border p-4 card">
       <div className="flex items-center gap-3">
         <Image src="/vibella-logo.svg" alt="avatar" width={40} height={40} />
         <div>
@@ -28,7 +28,7 @@ export default function PostCard({ post }: { post?: any }) {
       <p className="my-3">{post?.text ?? "Một ngày tuyệt vời để yêu bản thân ❤️"}</p>
 
       {post?.image && (
-        <div className="my-3">
+        <div className="my-3 img-reveal">
           {/* If image is an absolute URL and not configured in next.config, use native img to avoid build/runtime errors */}
           {typeof post.image === "string" && /^(https?:)?\/\//.test(post.image) ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -40,11 +40,11 @@ export default function PostCard({ post }: { post?: any }) {
       )}
 
       <div className="mt-2 flex items-center gap-4 text-sm">
-        <button onClick={toggleLike} className="rounded px-2 py-1 hover:bg-black/5">
+        <button onClick={toggleLike} className="rounded px-2 py-1 hover:bg-black/5 btn-primary">
           {liked ? "Đã thích" : "Thích"} ({likes})
         </button>
-        <Link href={`/post/${post?.id ?? 0}`} className="rounded px-2 py-1 hover:bg-black/5">Bình luận</Link>
-        <Link href={`/profile/${post?.authorId ?? 1}`} className="text-zinc-500">Hồ sơ</Link>
+        <Link href={`/post/${post?.id ?? 0}`} className="rounded px-2 py-1 hover:bg-black/5 transition-link">Bình luận</Link>
+        <Link href={`/profile/${post?.authorId ?? 1}`} className="text-zinc-500 transition-link">Hồ sơ</Link>
       </div>
     </article>
   );

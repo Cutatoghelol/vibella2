@@ -43,10 +43,13 @@ body {
   border: 0;
   padding: 0.5rem 1rem;
   border-radius: 9999px;
+  transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
 }
 
 .btn-primary:hover {
   filter: brightness(0.95);
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 8px 18px rgba(255,59,111,0.14);
 }
 
 /* Soft card background using accent */
@@ -62,3 +65,76 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+/* Animations */
+@keyframes slideDownFromTop {
+  0% { transform: translateY(-12px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  0% { transform: translateY(8px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pop {
+  0% { transform: scale(.98); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+/* Utility animation classes */
+.animate-slide-down {
+  animation: slideDownFromTop 420ms cubic-bezier(.2,.9,.2,1) both;
+}
+
+.animate-fade-in {
+  animation: fadeInUp 420ms ease both;
+}
+
+.animate-pop {
+  animation: pop 420ms ease both;
+}
+
+/* Card base and hover effect */
+.card {
+  background: transparent;
+  border-radius: 12px;
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(17, 24, 39, 0.08);
+  background-color: var(--foreground-soft);
+}
+
+/* Image reveal */
+.img-reveal {
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.img-reveal img,
+.img-reveal picture,
+.img-reveal video {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: scale(1.03);
+  transition: transform 420ms ease;
+}
+
+.img-reveal:hover img { transform: scale(1); }
+
+/* Small helper for subtle glowing */
+.glow-accent {
+  box-shadow: 0 6px 20px rgba(255,59,111,0.08);
+}
+
+/* Make links animate on hover */
+a.transition-link {
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+a.transition-link:hover { transform: translateY(-2px); }

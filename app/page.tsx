@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center gap-8 py-16 px-6 bg-white dark:bg-black sm:items-start">
-        <header className="flex w-full items-center justify-between">
+        <header className="flex w-full items-center justify-between card animate-slide-down">
           <div className="flex items-center gap-3">
             <Image className="dark:invert" src="/vibella-logo.svg" alt="Vibella" width={140} height={34} priority />
             <div>
@@ -14,21 +14,21 @@ export default function Home() {
             </div>
           </div>
           <div className="flex gap-3">
-            <Link href="/auth/login" className="rounded bg-foreground px-4 py-2 text-background">Đăng nhập</Link>
-            <Link href="/auth/signup" className="rounded border px-4 py-2">Đăng ký</Link>
+            <Link href="/auth/login" className="btn-primary">Đăng nhập</Link>
+            <Link href="/auth/signup" className="rounded border border-foreground px-4 py-2">Đăng ký</Link>
           </div>
         </header>
 
-        <section className="w-full rounded border p-6">
+        <section className="w-full rounded border p-6 card animate-fade-in">
           <h2 className="text-xl font-semibold">Bắt đầu</h2>
           <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
-            <Link href="/feed" className="rounded border p-4 text-center">Bảng tin</Link>
-            <Link href="/create" className="rounded border p-4 text-center">Tạo bài</Link>
-            <Link href="/habits" className="rounded border p-4 text-center">Theo dõi thói quen</Link>
+            <Link href="/feed" className="rounded border p-4 text-center card animate-pop">Bảng tin</Link>
+            <Link href="/create" className="rounded border p-4 text-center card animate-pop">Tạo bài</Link>
+            <Link href="/habits" className="rounded border p-4 text-center card animate-pop">Theo dõi thói quen</Link>
           </div>
         </section>
 
-        <section className="w-full rounded border p-6">
+        <section className="w-full rounded border p-6 card animate-fade-in">
           <h3 className="text-lg font-semibold">Tính năng nổi bật</h3>
           <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-zinc-600">
             <li>Đăng bài, hình ảnh, tâm trạng</li>
