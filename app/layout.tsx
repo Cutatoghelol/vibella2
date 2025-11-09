@@ -3,6 +3,7 @@ import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+import AuthGate from "./components/AuthGate";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -37,7 +38,9 @@ export default function RootLayout({
         <Header />
         <div className="flex w-full">
           <Sidebar />
-          <div className="flex-1">{children}</div>
+          <div className="flex-1">
+            <AuthGate>{children}</AuthGate>
+          </div>
         </div>
       </body>
     </html>
