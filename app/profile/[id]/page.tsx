@@ -5,7 +5,7 @@ export default function ProfilePage({ params }: { params: { id: string } }) {
   return (
     <main className="mx-auto my-12 max-w-3xl px-6">
       <div className="flex items-center gap-4">
-        <Image src="/vercel.svg" alt="avatar" width={80} height={80} />
+        <Image src="/vibella-logo.svg" alt="avatar" width={80} height={80} />
         <div>
           <h2 className="text-2xl font-semibold">Trịnh Hoa</h2>
           <p className="text-sm text-zinc-600">Bio: Yêu bản thân và chia sẻ năng lượng tích cực</p>

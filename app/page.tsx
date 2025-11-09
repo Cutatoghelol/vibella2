@@ -7,7 +7,7 @@ export default function Home() {
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center gap-8 py-16 px-6 bg-white dark:bg-black sm:items-start">
         <header className="flex w-full items-center justify-between">
           <div className="flex items-center gap-3">
-            <Image className="dark:invert" src="/next.svg" alt="Vibella" width={72} height={20} priority />
+            <Image className="dark:invert" src="/vibella-logo.svg" alt="Vibella" width={140} height={34} priority />
             <div>
               <h1 className="text-2xl font-bold">Vibella — Mạng xã hội lan tỏa năng lượng tích cực</h1>
               <p className="text-sm text-zinc-600">Kết nối, chia sẻ thói quen tốt và cùng nhau phát triển</p>

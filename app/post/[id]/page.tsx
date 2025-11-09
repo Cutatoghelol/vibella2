@@ -7,7 +7,7 @@ export default function PostDetail({ params }: { params: { id: string } }) {
     <main className="mx-auto my-12 max-w-3xl px-6">
       <article className="rounded border p-4">
         <div className="flex items-center gap-3">
-          <Image src="/vercel.svg" alt="avatar" width={48} height={48} />
+          <Image src="/vibella-logo.svg" alt="avatar" width={48} height={48} />
           <div>
             <div className="font-semibold">Người dùng Ví dụ</div>
             <div className="text-sm text-zinc-500">2 giờ trước</div>

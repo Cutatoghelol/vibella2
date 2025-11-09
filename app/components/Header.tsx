@@ -7,7 +7,7 @@ export default function Header() {
     <header className="w-full border-b bg-white/60 backdrop-blur-sm dark:bg-black/60">
       <div className="mx-auto flex max-w-4xl items-center justify-between gap-4 px-6 py-3">
         <div className="flex items-center gap-3">
-          <Image src="/next.svg" alt="Vibella" width={36} height={14} className="dark:invert" />
+          <Image src="/vibella-logo.svg" alt="Vibella" width={140} height={34} className="dark:invert" />
           <h1 className="text-lg font-semibold">Vibella — Mạng xã hội tích cực</h1>
         </div>
 

@@ -18,7 +18,7 @@ export default function PostCard({ post }: { post?: any }) {
   return (
     <article className="rounded border p-4">
       <div className="flex items-center gap-3">
-        <Image src="/vercel.svg" alt="avatar" width={40} height={40} />
+        <Image src="/vibella-logo.svg" alt="avatar" width={40} height={40} />
         <div>
           <div className="font-semibold">{post?.author ?? "Người dùng"}</div>
           <div className="text-sm text-zinc-500">{post?.time ?? "Vừa xong"}</div>
