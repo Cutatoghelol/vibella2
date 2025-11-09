@@ -7,6 +7,10 @@
   --foreground-soft: rgba(255,59,111,0.08);
   --muted: #6b6b6b;
   --text: #2b2b2b;
+  --accent-1: #ff3b6f; /* main pink-red */
+  --accent-2: #ff8a5b; /* coral/orange */
+  --accent-3: #6bd5c9; /* teal */
+  --card-bg: #fffafc; /* very soft pink card */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,6 +20,10 @@
     --foreground-soft: rgba(255,133,161,0.06);
     --muted: #bdbdbd;
     --text: #e6dfe6;
+    --accent-1: #ff85a1;
+    --accent-2: #ffb48a;
+    --accent-3: #8fe6dc;
+    --card-bg: rgba(255,255,255,0.03);
   }
 }
 
@@ -38,8 +46,8 @@ body {
 
 /* Primary button */
 .btn-primary {
-  background-color: var(--foreground);
-  color: var(--background);
+  background-color: var(--accent-1);
+  color: white;
   border: 0;
   padding: 0.5rem 1rem;
   border-radius: 9999px;
@@ -50,6 +58,22 @@ body {
   filter: brightness(0.95);
   transform: translateY(-2px) scale(1.01);
   box-shadow: 0 8px 18px rgba(255,59,111,0.14);
+}
+
+.btn-secondary {
+  background: linear-gradient(90deg, var(--accent-2), #ff6f57);
+  color: white;
+  border: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent-1);
+  border: 1px solid rgba(255,59,111,0.12);
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
 }
 
 /* Soft card background using accent */
@@ -91,6 +115,12 @@ a:hover {
   100% { transform: scale(1); }
 }
 
+@keyframes floatY {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
 /* Utility animation classes */
 .animate-slide-down {
   animation: slideDownFromTop 360ms cubic-bezier(.2,.9,.2,1) both;
@@ -109,9 +139,13 @@ a:hover {
   transform-origin: center;
 }
 
+.float-slow { animation: floatY 6s ease-in-out infinite; }
+.float-medium { animation: floatY 4.5s ease-in-out infinite; }
+.float-fast { animation: floatY 3s ease-in-out infinite; }
+
 /* Card base and hover effect */
 .card {
-  background: transparent;
+  background: var(--card-bg);
   border-radius: 12px;
   transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
 }
@@ -151,3 +185,16 @@ a.transition-link {
 }
 
 a.transition-link:hover { transform: translateY(-2px); }
+
+/* Utility for hero graphic container */
+.hero-graphic {
+  width: 220px;
+  height: 140px;
+}
+
+/* ensure text doesn't overlap: responsive stacking */
+@media (max-width: 640px) {
+  .hero-wrapper { display: block; }
+  .hero-content { width: 100%; }
+  .hero-graphic { display: none; }
+}
