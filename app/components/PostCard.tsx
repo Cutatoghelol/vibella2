@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { Heart, MessageCircle } from "lucide-react";
 
 export default function PostCard({ post }: { post?: any }) {
   const [liked, setLiked] = useState<boolean>(Boolean(post?.liked ?? false));
@@ -11,6 +12,7 @@ export default function PostCard({ post }: { post?: any }) {
     const newLiked = !liked;
     setLiked(newLiked);
     setLikes((l) => (newLiked ? l + 1 : Math.max(0, l - 1)));
+    // TODO: call API to persist like
   }
 
   return (
@@ -35,8 +37,12 @@ export default function PostCard({ post }: { post?: any }) {
           </div>
 
           <div className="flex gap-2">
-            <button onClick={toggleLike} className={`action-btn heart`}>{liked ? "💖 Đã thích" : "❤️ Thích"} ({likes})</button>
-            <Link href={`/post/${post?.id ?? 0}`} className="action-btn comment">💬 Bình luận</Link>
+            <button onClick={toggleLike} className={`action-btn heart`} aria-pressed={liked} aria-label={liked ? "Bỏ thích" : "Thích"}>
+              <Heart size={16} className={`mr-2 ${liked ? 'text-pink-500' : 'text-zinc-500'}`} /> {liked ? 'Đã thích' : 'Thích'} ({likes})
+            </button>
+            <Link href={`/post/${post?.id ?? 0}`} className="action-btn comment">
+              <MessageCircle size={16} className="mr-2" /> Bình luận
+            </Link>
           </div>
         </div>
       </div>

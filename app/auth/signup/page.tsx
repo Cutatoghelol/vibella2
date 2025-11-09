@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabaseClient";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -15,12 +16,21 @@ export default function SignupPage() {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    // TODO: wire up Supabase auth; create profile
     try {
-      await new Promise((r) => setTimeout(r, 700));
+      const { data, error: signError } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: { full_name: displayName },
+        },
+      });
+      if (signError) throw signError;
+
+      // Redirect to feed; profile row will be created by the DB trigger
       router.push("/feed");
-    } catch (err) {
-      setError("Lỗi đăng ký");
+    } catch (err: any) {
+      console.error("Signup error", err);
+      setError(err.message ?? "Lỗi đăng ký");
     } finally {
       setLoading(false);
     }

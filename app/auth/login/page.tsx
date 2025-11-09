@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabaseClient";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -14,13 +15,17 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    // TODO: wire up Supabase auth
     try {
-      // placeholder delay
-      await new Promise((r) => setTimeout(r, 700));
+      const { data, error: authError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      if (authError) throw authError;
+      // On success, redirect to feed
       router.push("/feed");
-    } catch (err) {
-      setError("Lỗi đăng nhập");
+    } catch (err: any) {
+      console.error("Login error", err);
+      setError(err.message ?? "Lỗi đăng nhập");
     } finally {
       setLoading(false);
     }
