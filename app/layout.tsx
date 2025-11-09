@@ -19,6 +19,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Vibella — Mạng xã hội tích cực",
   description: "Vibella — Kết nối, chia sẻ thói quen tốt và lan tỏa năng lượng tích cực",
+  themeColor: '#FF3B6F',
+  icons: {
+    icon: '/vibella-logo.svg',
+    apple: '/vibella-logo.svg',
+  },
 };
 
 export default function RootLayout({

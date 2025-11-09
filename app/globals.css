@@ -192,6 +192,16 @@ a.transition-link:hover { transform: translateY(-2px); }
   height: 140px;
 }
 
+.hero-wrapper { display: flex; align-items: center; gap: 12px; }
+.hero-content { display: flex; align-items: center; gap: 12px; }
+
+@media (max-width: 768px) {
+  .hero-wrapper { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .hero-content { width: 100%; }
+  .hero-graphic { display: none; }
+  main { padding-left: 12px; padding-right: 12px; }
+}
+
 /* ensure text doesn't overlap: responsive stacking */
 @media (max-width: 640px) {
   .hero-wrapper { display: block; }
