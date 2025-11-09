@@ -83,9 +83,17 @@ a:hover {
   100% { transform: scale(1); }
 }
 
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.08); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
 /* Utility animation classes */
 .animate-slide-down {
-  animation: slideDownFromTop 420ms cubic-bezier(.2,.9,.2,1) both;
+  animation: slideDownFromTop 360ms cubic-bezier(.2,.9,.2,1) both;
 }
 
 .animate-fade-in {
@@ -94,6 +102,11 @@ a:hover {
 
 .animate-pop {
   animation: pop 420ms ease both;
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1600ms ease-in-out infinite;
+  transform-origin: center;
 }
 
 /* Card base and hover effect */
