@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { LucideMenu, LogOut } from "lucide-react";
+import { FiMenu, FiLogOut } from "react-icons/fi";
 import { supabase } from "@/lib/supabaseClient";
 import type { AuthChangeEvent, Session } from "@supabase/supabase-js";
 
@@ -58,7 +58,7 @@ export default function Header() {
             <div className="flex items-center gap-3">
               <Link href="/create" className="btn-cta btn-cta-primary mr-2">Tạo</Link>
               <button onClick={handleSignOut} className="btn-cta btn-cta-secondary flex items-center gap-2">
-                <LogOut size={14} /> Đăng xuất
+                <FiLogOut size={14} /> Đăng xuất
               </button>
             </div>
           ) : (
@@ -69,7 +69,7 @@ export default function Header() {
           )}
 
           <button className="sm:hidden rounded border px-3 py-2" onClick={() => setOpen((v) => !v)} aria-label="Mở menu">
-            <LucideMenu size={18} />
+            <FiMenu size={18} />
           </button>
         </div>
       </div>

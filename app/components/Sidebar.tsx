@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { MessageSquare, Home, Plus, Clipboard, Trophy } from "lucide-react";
+import { FiMessageSquare, FiHome, FiPlus, FiClipboard, FiAward } from "react-icons/fi";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(true);
@@ -41,16 +41,16 @@ export default function Sidebar() {
 
         <nav className="flex flex-col gap-2 mb-4">
           <Link href="/feed" className={`rounded px-3 py-2 hover:bg-black/5 ${open ? "" : "text-center"}`}>
-            {open ? "Bảng tin" : <Home size={18} className="mx-auto" />}
+            {open ? "Bảng tin" : <FiHome size={18} className="mx-auto" />}
           </Link>
           <Link href="/create" className={`rounded px-3 py-2 hover:bg-black/5 ${open ? "" : "text-center"}`}>
-            {open ? "Tạo bài" : <Plus size={18} className="mx-auto" />}
+            {open ? "Tạo bài" : <FiPlus size={18} className="mx-auto" />}
           </Link>
           <Link href="/habits" className={`rounded px-3 py-2 hover:bg-black/5 ${open ? "" : "text-center"}`}>
-            {open ? "Thói quen" : <Clipboard size={18} className="mx-auto" />}
+            {open ? "Thói quen" : <FiClipboard size={18} className="mx-auto" />}
           </Link>
           <Link href="/challenges" className={`rounded px-3 py-2 hover:bg-black/5 ${open ? "" : "text-center"}`}>
-            {open ? "Thách đấu" : <Trophy size={18} className="mx-auto" />}
+            {open ? "Thách đấu" : <FiAward size={18} className="mx-auto" />}
           </Link>
         </nav>
 
@@ -59,10 +59,10 @@ export default function Sidebar() {
           <h4 className={`text-sm font-medium mb-2 ${open ? "" : "sr-only"}`}>Hành động nhanh</h4>
           <div className="flex flex-col gap-2">
             <Link href="/create" className={`btn-secondary ${open ? "w-full text-sm" : "w-full text-center"}`}>
-              {open ? "Tạo bài mới" : <Plus size={14} className="mx-auto" />}
+              {open ? "Tạo bài mới" : <FiPlus size={14} className="mx-auto" />}
             </Link>
             <Link href="/habits" className={`btn-outline ${open ? "w-full text-sm" : "w-full text-center"}`}>
-              {open ? "Ghi thói quen" : <Clipboard size={14} className="mx-auto" />}
+              {open ? "Ghi thói quen" : <FiClipboard size={14} className="mx-auto" />}
             </Link>
           </div>
         </div>
@@ -85,7 +85,7 @@ export default function Sidebar() {
           <div className="flex flex-col gap-2">
             {challenges.map((c) => (
               <div key={c.id} className="flex items-center justify-between rounded px-3 py-2 bg-white/20">
-                <div className="text-sm truncate">{open ? c.title : <Trophy size={16} />}</div>
+                <div className="text-sm truncate">{open ? c.title : <FiAward size={16} />}</div>
                 {open && <button className="btn-outline text-xs">Tham gia</button>}
               </div>
             ))}
@@ -96,7 +96,7 @@ export default function Sidebar() {
       {/* Chatbot quick access */}
       <div className="mt-4">
         <Link href="/ai/chatbot" className="flex items-center gap-2 btn-primary">
-          <MessageSquare size={16} />
+          <FiMessageSquare size={16} />
           {open && <span>Trợ lý AI</span>}
         </Link>
       </div>
