@@ -1,26 +1,64 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Primary palette — pink / red focused */
+  --background: #fff0f6; /* very light pink */
+  --foreground: #ff3b6f; /* primary accent (pink-red) */
+  --foreground-soft: rgba(255,59,111,0.08);
+  --muted: #6b6b6b;
+  --text: #2b2b2b;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0b0710; /* dark plum */
+    --foreground: #ff85a1; /* lighter pink on dark */
+    --foreground-soft: rgba(255,133,161,0.06);
+    --muted: #bdbdbd;
+    --text: #e6dfe6;
   }
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
+  color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Utility classes used across the app to map to our color tokens */
+.bg-foreground {
+  background-color: var(--foreground) !important;
+}
+.text-background {
+  color: var(--background) !important;
+}
+.border-foreground {
+  border-color: rgba(255,59,111,0.12) !important;
+}
+
+/* Primary button */
+.btn-primary {
+  background-color: var(--foreground);
+  color: var(--background);
+  border: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+}
+
+.btn-primary:hover {
+  filter: brightness(0.95);
+}
+
+/* Soft card background using accent */
+.card-foreground-soft {
+  background-color: var(--foreground-soft);
+}
+
+/* Make links use accent color */
+a {
+  color: var(--foreground);
+}
+
+a:hover {
+  text-decoration: underline;
 }
