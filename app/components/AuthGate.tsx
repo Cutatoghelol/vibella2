@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import type { Session, AuthChangeEvent } from "@supabase/supabase-js";
+import GuestLanding from "./GuestLanding";
 
 export default function AuthGate({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -48,27 +49,6 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
   // If user exists, render normally
   if (user) return <>{children}</>;
 
-  // Guest view: render children but block interaction with a prominent intro overlay
-  return (
-    <div className="relative">
-      {children}
-
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-6">
-        <div className="max-w-xl rounded-lg bg-white p-8 text-center shadow-lg card">
-          <h2 className="mb-2 text-2xl font-semibold">Chào mừng đến với Vibella</h2>
-          <p className="mb-4 text-sm text-zinc-600">Để truy cập đầy đủ tính năng (đăng bài, theo dõi, tham gia thử thách, sử dụng chatbot AI), vui lòng đăng nhập hoặc đăng ký tài khoản.</p>
-
-          <div className="flex items-center justify-center gap-3">
-            <Link href="/auth/login" className="btn-primary">Đăng nhập</Link>
-            <Link href="/auth/signup" className="btn-outline">Đăng ký</Link>
-          </div>
-
-          <div className="mt-4 text-xs text-zinc-500">Bạn vẫn có thể xem một số phần công khai nhưng không thể tương tác cho đến khi đăng nhập.</div>
-        </div>
-      </div>
-
-      {/* Block pointer events to underlying UI so guests cannot interact */}
-      <div className="fixed inset-0 z-40 bg-transparent" aria-hidden />
-    </div>
-  );
+  // Guest view: render a dedicated public landing page (no interactions)
+  return <GuestLanding />;
 }
