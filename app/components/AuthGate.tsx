@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import type { Session, AuthChangeEvent } from "@supabase/supabase-js";
 
 export default function AuthGate({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -26,7 +27,7 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
     }
     check();
 
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: listener } = supabase.auth.onAuthStateChange((event: AuthChangeEvent, session: Session | null) => {
       if (!mounted) return;
       setUser(session?.user ?? null);
       setLoading(false);
